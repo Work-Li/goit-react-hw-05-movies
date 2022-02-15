@@ -1,11 +1,31 @@
 import './App.css';
-
-// 16600ad2b0f485ce73541bf9aac86f47
-// https://api.themoviedb.org/3/movie/550?api_key=16600ad2b0f485ce73541bf9aac86f47
-
+import { Route, Routes } from 'react-router-dom';
+import Container from './components/Container/Container';
+import Navigation from './components/Navigation/Navigation';
+import HomePage from './views/HomePage';
+import MoviesPage from './views/MoviesPage';
+import NotFoundView from './views/NotFoundView';
+// import SearchForm from './components/SearchForm/SearchForm';
 
 function App() {
-return <div className="App">TEST</div>;
+return (
+    <Container>
+        
+        <Routes>
+            <Route path='/' element={<Navigation/>}>
+                <Route index  element = {<HomePage />} />
+                <Route path="/movies" element ={<MoviesPage />}/>
+                    {/* <Route index element = {<SearchForm />}/>  */}
+
+                
+
+                <Route path='*' element={<NotFoundView />} />
+           
+            </Route>
+        </Routes>
+    </Container>
+)
+//  <div className="App">TEST</div>;
 }
 
 export default App;

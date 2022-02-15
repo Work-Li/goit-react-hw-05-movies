@@ -1,27 +1,25 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import s from './Navigation.module.css'
 
 const Navigation = () => (
-    <nav>
+  <div>
+    <nav className={s.nav__container}>
       <NavLink
-        exact
         to="/"
         className={s.link}
-        activeClassName={s.activeLink}
       >
         Home
       </NavLink>
   
       <NavLink
-        to="/authors"
+        to="/movies"
         className={s.link}
-        activeClassName={s.activeLink}
       >
         Movies
       </NavLink>
-  
-      
     </nav>
+    <Outlet />
+  </div>
   );
   
   export default Navigation;
