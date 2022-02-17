@@ -5,7 +5,10 @@ import Navigation from './components/Navigation/Navigation';
 import HomePage from './views/HomePage';
 import MoviesPage from './views/MoviesPage';
 import NotFoundView from './views/NotFoundView';
-// import SearchForm from './components/SearchForm/SearchForm';
+import SearchForm from './components/SearchForm/SearchForm';
+import MovieDetailsPage from './views/MovieDetailsPage';
+import Cast from './views/Cast';
+import Reviews from './views/Reviews';
 
 function App() {
 return (
@@ -13,10 +16,14 @@ return (
         
         <Routes>
             <Route path='/' element={<Navigation/>}>
-                <Route index  element = {<HomePage />} />
-                <Route path="/movies" element ={<MoviesPage />}/>
-                    {/* <Route index element = {<SearchForm />}/>  */}
-
+                <Route index  element = {<HomePage />} /> 
+                <Route path='/movies' element ={<MoviesPage />}>
+                    <Route index element = {<SearchForm />}/> 
+                </Route>
+                <Route patch='/movies/:movieId' element ={<MovieDetailsPage />} />
+                    <Route path="cast" element={<Cast />}/>
+                    <Route path="reviews" element={<Reviews />}/>
+                
                 
 
                 <Route path='*' element={<NotFoundView />} />

@@ -15,23 +15,5 @@
 
 .link:hover {
   cursor: pointer;
-  border-bottom: 3px solid rgb(106, 106, 236);
+  color: rgb(106, 106, 236);
 }
-
-.active {
-  background-color: rgb(240, 14, 14);
-  border-bottom: 3px solid rgb(106, 106, 236);
-}
-/* .link {
-  display: inline-block;
-  text-decoration: none;
-  padding: 12px;
-  font-weight: 500;
-  color: #2a363b;
-  font-size: 18px;
-}
-
-.activeLink {
-  composes: link;
-  color: #2196f3;
-} */

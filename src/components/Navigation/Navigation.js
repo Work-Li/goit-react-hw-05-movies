@@ -7,6 +7,9 @@ const Navigation = () => (
       <NavLink
         to="/"
         className={s.link}
+        style={({ isActive }) => ({
+          borderBottom:  isActive ? '3px solid rgb(106, 106, 236)' : 'none',
+        })}
       >
         Home
       </NavLink>
@@ -14,6 +17,9 @@ const Navigation = () => (
       <NavLink
         to="/movies"
         className={s.link}
+        style={({ isActive }) => ({
+          borderBottom:  isActive ? '3px solid rgb(106, 106, 236)' : 'none',
+        })}
       >
         Movies
       </NavLink>
