@@ -1,0 +1,8 @@
+.btn {
+  margin-bottom: 10px;
+  width: 70px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 4px;
+  background-color: rgba(105, 105, 204, 0.698);
+}

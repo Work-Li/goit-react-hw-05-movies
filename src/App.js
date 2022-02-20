@@ -1,49 +1,54 @@
-import './App.css';
+import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Container from './components/Container/Container';
 import Navigation from './components/Navigation/Navigation';
-import HomePage from './views/HomePage';
-import MoviesPage from './views/MoviesPage';
-import NotFoundView from './views/NotFoundView';
-import SearchForm from './components/SearchForm/SearchForm';
-import MovieDetailsPage from './views/MovieDetailsPage';
-import Cast from './views/Cast';
-import Reviews from './views/Reviews';
 
-function App() {
+
+const HomePage = lazy(() =>
+  import('./views/HomePage.js' /* webpackChunkName: "home-view" */),
+);
+const MoviesPage = lazy(() =>
+  import('./views/MoviesPage.js' /* webpackChunkName: "movies-page" */),
+);
+
+const MovieDetailsPage = lazy(() =>
+  import(
+    './views/MovieDetailsPage.js' /* webpackChunkName: "movie-details-page" */
+  ),
+);
+
+const NotFoundView = lazy(() =>
+  import('./views/NotFoundView.js' /* webpackChunkName: "not-found-view" */),
+);
+
+const Cast = lazy(() =>
+  import('./components/Cast/Cast.js' /* webpackChunkName: "cast" */),
+);
+const Reviews = lazy(() =>
+  import('./components/Reviews/Reviews.js' /* webpackChunkName: "reviews" */),
+);
+
+
+export default  function App() {
 return (
     <Container>
-        
-        <Routes>
-            <Route path='/' element={<Navigation/>}>
-                <Route index  element = {<HomePage />} /> 
-                <Route path='/movies' element ={<MoviesPage />}>
-                    <Route index element = {<SearchForm />}/> 
-                </Route>
-                <Route patch='/movies/:movieId' element ={<MovieDetailsPage />} />
+        <Navigation/>
+        <Suspense fallback={<h4>Loading...</h4>}>
+            <Routes>
+                <Route path="/" element={<HomePage />}/>
+                <Route path="/movies" element ={<MoviesPage />}/>
+                <Route path="/movies/:movieId" element ={<MovieDetailsPage />} >  
                     <Route path="cast" element={<Cast />}/>
                     <Route path="reviews" element={<Reviews />}/>
+                </Route>
+               
+                <Route path="*" element={<NotFoundView />} />
                 
-                
-
-                <Route path='*' element={<NotFoundView />} />
-           
-            </Route>
-        </Routes>
+            </Routes>
+        </Suspense>
     </Container>
 )
 //  <div className="App">TEST</div>;
 }
 
-export default App;
 
-// // /trending/get-trending 
-// список самых популярных фильмов на сегодня для создания коллекции на главной странице.
-// // /search/search-movies 
-// поиск кинофильма по ключевому слову на странице фильмов.
-// // /movies/get-movie-details 
-// запрос полной информации о фильме для страницы кинофильма.
-// // /movies/get-movie-credits 
-// запрос информации о актёрском составе для страницы кинофильма.
-// // /movies/get-movie-reviews 
-// запрос обзоров для страницы кинофильма.

@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import * as API from '../services/API';
-// import { fetchTrendingMovies } from '../services/API';
-import { Link, useLocation } from 'react-router-dom'
+import MoviesList from '../components/MoviesList/MoviesList';
+
 // import {Spinner} from './components/Loader/Loader';
 import s from './HomePage.module.css'
 
 export default function HomePage () {
     const [movies, setMovies] = useState(null);
-    const location = useLocation();
+    
     useEffect(() => {
         API
         .fetchTrendingMovies()
@@ -17,18 +17,7 @@ export default function HomePage () {
 
     return (
         <> <h1 className={s.title}>Day's trending movies</h1>
-            {movies && (<ul className={s.list}>
-                {movies.map(movie => {
-                    return (
-                        <li key={movie.id} className={s.link}> 
-                        <Link to={`movies/${movie.id}`} 
-                            state={{ from: location }} 
-                            
-                            >{movie.title}
-                        </Link></li>)
-                })}
-            </ul>)}
+            {movies && <MoviesList movies={movies} />}
         </>
     );
 }
-// /trending/get-trending{movies, path}

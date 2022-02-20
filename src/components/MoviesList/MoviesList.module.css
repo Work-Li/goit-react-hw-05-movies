@@ -1,0 +1,26 @@
+a {
+  text-decoration: none;
+}
+
+.list {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  /* border: thick double rgb(106, 106, 236); */
+  list-style-position: inside;
+  list-style-type: disclosure-closed;
+  font-size: 18px;
+  color: rgba(12, 29, 185, 0.657);
+}
+.link {
+  margin-bottom: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.link:hover {
+  cursor: pointer;
+  border-bottom: 3px solid rgb(106, 106, 236);
+}

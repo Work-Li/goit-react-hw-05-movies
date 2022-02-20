@@ -1,0 +1,25 @@
+.cast {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+}
+.person {
+  width: calc((100% - 20px) / 3);
+  list-style: none;
+}
+.title {
+  font-size: 30px;
+  margin-top: 50px;
+  text-align: center;
+}
+.image {
+  background-image: url(../../images/no_profile_picture.jpg);
+  background-size: 300px;
+  margin-top: 15px;
+}
+.text {
+  margin-top: 0;
+  margin-bottom: 5px;
+}

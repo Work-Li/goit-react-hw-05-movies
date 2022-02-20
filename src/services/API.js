@@ -43,8 +43,10 @@ export function FetchMovieCredits(movieId) {
     );
 }
 
-export function FetchSearchFilms(query) {
-    return fetchWithErrorHandling(
-      `${BASE_URL}/search/movie?query=${query}&api_key=${API_KEY}&include_adult=false`,
-    );
+
+
+export function FetchSearchingMovies(query) {
+  return fetchWithErrorHandling(
+    `${BASE_URL}/search/movie?query=${query}&api_key=${API_KEY}&include_adult=false`,
+  );
 }
